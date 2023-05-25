@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <name>Keycloak Discord</name>
+    <description/>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.keycloak.extensions</groupId>
+    <artifactId>keycloak-discord</artifactId>
+    <version>0.4.6-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <version.keycloak>17.0.0</version.keycloak>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-core</artifactId>
+            <scope>provided</scope>
+            <version>${version.keycloak}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-server-spi</artifactId>
+            <scope>provided</scope>
+            <version>${version.keycloak}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-server-spi-private</artifactId>
+            <scope>provided</scope>
+            <version>${version.keycloak}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-services</artifactId>
+            <scope>provided</scope>
+            <version>${version.keycloak}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version> <!-- Use the latest version available -->
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.3</version> <!-- Or the latest version available -->
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Dependencies>org.keycloak.keycloak-services</Dependencies>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
