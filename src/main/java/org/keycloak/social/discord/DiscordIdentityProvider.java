@@ -105,6 +105,8 @@ public class DiscordIdentityProvider extends AbstractOAuth2IdentityProvider<Disc
         }
 
         BrokeredIdentityContext user = extractIdentityFromProfile(null, profile);
+        user.setUserAttribute("discordUser", user.getId());
+        
         user.getContextData().put("access_token", accessToken);
 
         // Iterate over the allowed guilds and add the user to each one
